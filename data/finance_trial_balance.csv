@@ -1,0 +1,11 @@
+﻿account_code,account_name,amount_inr,normal_balance
+REV001,Revenue,150000.0,Credit
+COGS001,Cost of Goods Sold,85000.0,Debit
+SAL001,Salaries,30000.0,Debit
+RENT001,Rent,8000.0,Debit
+UTIL001,Utilities,4000.0,Debit
+INT001,Interest Expense,3000.0,Debit
+MKT001,Marketing,5500.0,Debit
+TRV001,Travel,2500.0,Debit
+INS001,Insurance,1800.0,Debit
+DEP001,Depreciation,4200.0,Debit

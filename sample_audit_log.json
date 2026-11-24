@@ -1,0 +1,77 @@
+{
+  "run_id": "RUN-SAMPLE-0001",
+  "timestamp_utc": "2026-11-22T06:16:57+00:00",
+  "input_files": [
+    {
+      "role": "trial_balance",
+      "file_name": "finance_trial_balance.csv",
+      "sha256": "5941d7922ad4f9fbf5f4bc95ef5dd5ec518cff965fe153644d9a448bea79bc3c"
+    },
+    {
+      "role": "reported_pl",
+      "file_name": "finance_reported_pl.csv",
+      "sha256": "cba9424169374cfb50b3d2101518c183d84b84fdc51a2597af9126655df86775"
+    },
+    {
+      "role": "mapping_rules",
+      "file_name": "finance_mapping_rules.csv",
+      "sha256": "76d6d8f73e07f15cf6399168c1a5dc01ee54ba14ef3fb661535020720ad3a095"
+    }
+  ],
+  "rules": {
+    "rules_version": "mapping-rules-v1.0",
+    "materiality_threshold_inr": 100,
+    "sign_convention": "All amounts are stored as positive balances in their normal direction. Credit-balance accounts (Income) add to profit (+1); Debit-balance accounts (expenses) reduce profit (-1). Net profit = Income - Expenses. Variance = Reported P&L amount - Trial Balance amount. Profit difference = Reported net profit - Ledger net profit (positive means the reported P&L shows MORE profit than the ledger supports)."
+  },
+  "llm": {
+    "provider": "openai",
+    "model_name": "gpt-4o-mini",
+    "prompt_version": "pl-recon-prompt-v1.0",
+    "status": "SKIPPED_BY_USER",
+    "error": null,
+    "ungrounded_numbers_flagged": [],
+    "data_sent_to_llm": "computed reconciliation results only (no raw files)"
+  },
+  "results": {
+    "accounts_reconciled": 10,
+    "matching_accounts": 7,
+    "within_tolerance_accounts": 0,
+    "mismatching_accounts": 3,
+    "net_variance": 0.0,
+    "ledger_net_profit": 6000.0,
+    "reported_net_profit": 6000.0,
+    "profit_difference": 0.0,
+    "number_of_discrepancies": 3
+  },
+  "reconciliation_status": "DISCREPANCIES_FOUND",
+  "accounts_requiring_human_review": [
+    "UTIL001",
+    "MKT001",
+    "DEP001"
+  ],
+  "human_review_status": "PARTIALLY_REVIEWED",
+  "reviews": [
+    {
+      "account_code": "UTIL001",
+      "decision": "APPROVED",
+      "reviewer": "Asha Nair",
+      "reviewer_role": "Finance Controller",
+      "comment": "Invoice confirmed; P&L accrual to be corrected next cycle.",
+      "timestamp_utc": "2026-11-22T06:16:57+00:00"
+    },
+    {
+      "account_code": "MKT001",
+      "decision": "REJECTED",
+      "reviewer": "Asha Nair",
+      "reviewer_role": "Finance Controller",
+      "comment": "No support for 300 reduction.",
+      "timestamp_utc": "2026-11-22T06:16:57+00:00"
+    }
+  ],
+  "adjustments_posted": false,
+  "controls": [
+    "Calculations & threshold checks performed by Pandas, not LLM",
+    "LLM output validated by Pydantic schema + numeric grounding check",
+    "No automatic approval or adjustment posting"
+  ]
+}

@@ -1,0 +1,11 @@
+﻿account_code,account_name,pl_category,normal_balance,include_in_pl
+REV001,Revenue,Income,Credit,Include
+COGS001,Cost of Goods Sold,Direct Costs,Debit,Include
+SAL001,Salaries,Operating Expenses,Debit,Include
+RENT001,Rent,Operating Expenses,Debit,Include
+UTIL001,Utilities,Operating Expenses,Debit,Include
+INT001,Interest Expense,Finance Costs,Debit,Include
+MKT001,Marketing,Operating Expenses,Debit,Include
+TRV001,Travel,Operating Expenses,Debit,Include
+INS001,Insurance,Operating Expenses,Debit,Include
+DEP001,Depreciation,Operating Expenses,Debit,Include
